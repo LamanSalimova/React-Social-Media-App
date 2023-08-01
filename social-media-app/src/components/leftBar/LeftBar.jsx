@@ -23,7 +23,11 @@ export default function LeftBar() {
     <div className="leftBar">
       <div className="container">
         <div className="menu">
-          <Link to="/profile" style={{ textDecoration: "none" }}>
+          <Link
+            to="/profile"
+            style={{ textDecoration: "none" }}
+            className="userName"
+          >
             <div className="user">
               <img src={currentUser.profilePic} alt="user" />
               <span>{currentUser.userName}</span>

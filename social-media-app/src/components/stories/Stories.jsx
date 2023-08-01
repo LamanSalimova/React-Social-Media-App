@@ -13,17 +13,17 @@ export default function Stories() {
     },
     {
       id: 2,
-      name: "John Doe",
+      name: "Harold",
       img: "https://images.pexels.com/photos/17387766/pexels-photo-17387766/free-photo-of-adam-gunes-gozlugu-oturmak-masa.jpeg?auto=compress&cs=tinysrgb&w=600",
     },
     {
       id: 3,
-      name: "Duygu ",
+      name: "Emma ",
       img: "https://images.pexels.com/photos/15130309/pexels-photo-15130309/free-photo-of-kisi-kadin-sik-modaya-uygun.jpeg?auto=compress&cs=tinysrgb&w=600",
     },
     {
       id: 4,
-      name: "John Doe",
+      name: "Lucy",
       img: "https://images.pexels.com/photos/13916254/pexels-photo-13916254.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
     },
   ];

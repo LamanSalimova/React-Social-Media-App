@@ -14,10 +14,29 @@
     color: themed("textColor");
     z-index: 999;
 
+    @include mobile {
+      width: 100%;
+    }
+
     .left {
       display: flex;
       align-items: center;
       gap: 30px;
+
+      @include mobile {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .logo {
+        font-weight: 700;
+        color: themed("textColor");
+      }
+
+      .iconWrapper {
+        display: flex;
+        gap: 20px;
+      }
 
       .icon {
         cursor: pointer;
@@ -38,16 +57,16 @@
         padding: 5px;
         cursor: pointer;
 
+        @include mobile {
+          display: none;
+        }
+
         input {
           border: none;
           outline: none;
           width: 500px;
           background-color: transparent;
           color: themed("textColor");
-
-          @include mobile {
-            display: none;
-          }
 
           @include tablet {
             width: 200px;

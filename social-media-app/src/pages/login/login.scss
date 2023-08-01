@@ -1,6 +1,6 @@
 .login {
   height: 100vh;
-  background-color: #c8c6c8;
+  background-color: rgb(193, 190, 255);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -16,7 +16,7 @@
     .left {
       flex: 1;
       background: linear-gradient(rgba(26, 6, 97, 0.514), rgba(7, 2, 53, 0.5)),
-        url("https://raw.githubusercontent.com/khadkamhn/day-01-login-form/master/img/bg.jpg")
+        url("https://images.pexels.com/photos/3810792/pexels-photo-3810792.jpeg?auto=compress&cs=tinysrgb&w=600")
           center;
       background-size: cover;
       padding: 50px;

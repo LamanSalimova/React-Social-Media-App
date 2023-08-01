@@ -33,6 +33,10 @@
         flex-direction: column;
         gap: 20px;
 
+        .userName {
+          color: themed("textColor");
+        }
+
         span {
           font-size: 12px;
         }

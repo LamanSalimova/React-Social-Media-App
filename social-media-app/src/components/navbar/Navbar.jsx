@@ -17,16 +17,18 @@ export default function Navbar() {
   return (
     <div className="navbar">
       <div className="left">
-        <Link to="/" style={{ textDecoration: "none" }}>
-          lmnSocial
+        <Link to="/" style={{ textDecoration: "none" }} className="logo">
+          LmnSocial
         </Link>
-        <AiOutlineHome className="icon" />
-        {darkMode ? (
-          <FiSun onClick={toggle} className="icon" />
-        ) : (
-          <MdOutlineDarkMode onClick={toggle} className="icon" />
-        )}
-        <FiGrid className="icon" />
+        <div className="iconWrapper">
+          <AiOutlineHome className="icon" />
+          {darkMode ? (
+            <FiSun onClick={toggle} className="icon" />
+          ) : (
+            <MdOutlineDarkMode onClick={toggle} className="icon" />
+          )}
+          <FiGrid className="icon" />
+        </div>
         <div className="search">
           <BiSearchAlt2 className="icon" />
           <input type="text" placeholder="Search..." />
