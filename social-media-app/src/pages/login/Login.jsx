@@ -1,13 +1,31 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./login.scss";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../context/authContext";
 
 export default function Login() {
-  const { login } = useContext(AuthContext);
+  const { currentUser, login } = useContext(AuthContext);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [loginError, setLoginError] = useState(false);
+  const navigate = useNavigate();
 
-  const handleLogin = () => {
-    login();
+  // const handleLogin = () => {
+  //   login();
+  // };
+  const handleLogin = (e) => {
+    e.preventDefault();
+    if (!username || !password) {
+      setLoginError(true);
+      return;
+    }
+
+    if (username && password) {
+      setLoginError(false);
+      navigate("/");
+    } else {
+      setLoginError(true);
+    }
   };
 
   return (
@@ -27,9 +45,22 @@ export default function Login() {
         </div>
         <div className="right">
           <h1>Login</h1>
+          {loginError && (
+            <p className="error">Please enter username and password.</p>
+          )}
           <form>
-            <input type="text" placeholder="Username" />
-            <input type="password" placeholder="Password" />
+            <input
+              type="text"
+              placeholder="Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
             <button onClick={handleLogin}>Login</button>
           </form>
         </div>

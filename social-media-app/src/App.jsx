@@ -18,7 +18,6 @@ import { AuthContext } from "./context/authContext";
 
 function App() {
   const { currentUser } = useContext(AuthContext);
-
   const { darkMode } = useContext(DarkModeContext);
 
   const Layout = () => {

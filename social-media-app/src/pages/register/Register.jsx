@@ -1,7 +1,28 @@
-import { Link } from "react-router-dom";
 import "./register.scss";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export default function Register() {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [registerError, setRegisterError] = useState(false);
+  const navigate = useNavigate();
+
+  const handleRegister = (e) => {
+    e.preventDefault();
+    if (!username || !password) {
+      setRegisterError(true);
+      return;
+    }
+
+    if (username && password) {
+      setRegisterError(false);
+      navigate("/");
+    } else {
+      setRegisterError(true);
+    }
+  };
   return (
     <div className="register">
       <div className="card">
@@ -19,12 +40,29 @@ export default function Register() {
         </div>
         <div className="right">
           <h1>Register</h1>
+          {registerError && (
+            <p className="error">Please enter username and password.</p>
+          )}
           <form>
-            <input type="text" placeholder="Username" />
-            <input type="email" placeholder="Email" />
-            <input type="password" placeholder="Password" />
-            <input type="text" placeholder="Name" />
-            <button>Register</button>
+            <input
+              type="text"
+              placeholder="Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <button onClick={handleRegister}>Register</button>
           </form>
         </div>
       </div>

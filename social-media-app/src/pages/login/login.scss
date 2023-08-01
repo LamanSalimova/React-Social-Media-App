@@ -1,3 +1,5 @@
+@import "../../style.scss";
+
 .login {
   height: 100vh;
   background-color: rgb(193, 190, 255);
@@ -13,6 +15,10 @@
     min-height: 550px;
     overflow: hidden;
 
+    @include mobile {
+      width: 80%;
+    }
+
     .left {
       flex: 1;
       background: linear-gradient(rgba(26, 6, 97, 0.514), rgba(7, 2, 53, 0.5)),
@@ -24,6 +30,13 @@
       flex-direction: column;
       gap: 30px;
       color: white;
+
+      @include mobile {
+        display: none;
+      }
+      @include tablet {
+        display: none;
+      }
 
       h1 {
         font-size: 100px;
@@ -77,6 +90,10 @@
           color: white;
           font-weight: bold;
           cursor: pointer;
+
+          @include tablet {
+            margin: 0 auto;
+          }
         }
       }
     }

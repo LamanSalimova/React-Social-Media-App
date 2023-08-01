@@ -1,3 +1,5 @@
+@import "../../style.scss";
+
 .register {
   height: 100vh;
   background-color: rgb(193, 190, 255);
@@ -8,15 +10,18 @@
   .card {
     width: 65%;
     display: flex;
-    flex-direction: row-reverse;
     background-color: white;
     border-radius: 10px;
     min-height: 550px;
     overflow: hidden;
 
+    @include mobile {
+      width: 80%;
+    }
+
     .left {
       flex: 1;
-      background: linear-gradient(rgba(39, 11, 96, 0.5), rgba(39, 11, 96, 0.5)),
+      background: linear-gradient(rgba(26, 6, 97, 0.514), rgba(7, 2, 53, 0.5)),
         url("https://images.pexels.com/photos/3184433/pexels-photo-3184433.jpeg?auto=compress&cs=tinysrgb&w=600")
           center;
       background-size: cover;
@@ -25,6 +30,13 @@
       flex-direction: column;
       gap: 30px;
       color: white;
+
+      @include mobile {
+        display: none;
+      }
+      @include tablet {
+        display: none;
+      }
 
       h1 {
         font-size: 100px;
@@ -78,6 +90,10 @@
           color: white;
           font-weight: bold;
           cursor: pointer;
+
+          @include tablet {
+            margin: 0 auto;
+          }
         }
       }
     }
