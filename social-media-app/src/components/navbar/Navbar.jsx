@@ -36,10 +36,12 @@ export default function Navbar() {
         <BsFillPersonFill className="icon" />
         <AiOutlineMail className="icon" />
         <IoMdNotificationsOutline className="icon" />
-        <div className="user">
-          <img src={currentUser.profilePic} alt="user" />
-          <span>{currentUser.username}</span>
-        </div>
+        <Link to="/profile" style={{ textDecoration: "none" }}>
+          <div className="user">
+            <img src={currentUser.profilePic} alt="user" />
+            <span>{currentUser.username}</span>
+          </div>
+        </Link>
       </div>
     </div>
   );

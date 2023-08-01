@@ -25,6 +25,12 @@ export default function Post({ post }) {
 
   const [commentOpen, setCommentOpen] = useState(false);
   const [shareOpen, setShareOpen] = useState(false);
+
+  const [comments, setComments] = useState([]);
+
+  const handleSendComment = (comment) => {
+    setComments([...comments, comment]);
+  };
   return (
     <div className="post">
       <div className="container">
@@ -33,7 +39,7 @@ export default function Post({ post }) {
             <img src={post.profilePic} alt="" />
             <div className="details">
               <Link
-                to={`/profile/${post.userId}`}
+                // to={`/profile/${post.userId}`}
                 style={{ textDecoration: "none", color: "inherit" }}
               >
                 <span className="name">{post.name}</span>
@@ -58,14 +64,19 @@ export default function Post({ post }) {
           </div>
           <div className="item" onClick={() => setCommentOpen(!commentOpen)}>
             <BiCommentDetail fontSize="22px" />
-            12 Comments
+            {comments.length + 2} Comments
           </div>
           <div className="item" onClick={() => setShareOpen(!shareOpen)}>
             <BiSolidShareAlt fontSize="22px" />
             Share
           </div>
         </div>
-        {commentOpen && <Comments />}
+        {commentOpen && (
+          <Comments
+            onSendComment={handleSendComment}
+            sendedComments={comments}
+          />
+        )}
         {shareOpen && <Share />}
       </div>
     </div>

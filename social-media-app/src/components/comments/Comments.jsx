@@ -1,9 +1,26 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import "./comments.scss";
 import { AuthContext } from "../../context/authContext.jsx";
 
-export default function Comments() {
+export default function Comments({ onSendComment, sendedComments }) {
   const { currentUser } = useContext(AuthContext);
+
+  const [newComment, setNewComment] = useState("");
+
+  const handleSendComment = () => {
+    if (newComment.trim() !== "") {
+      const comment = {
+        id: Date.now(),
+        desc: newComment,
+        name: currentUser.name,
+        userId: currentUser.userId,
+        profilePicture: currentUser.profilePic,
+      };
+
+      onSendComment(comment);
+      setNewComment("");
+    }
+  };
 
   const comments = [
     {
@@ -27,8 +44,13 @@ export default function Comments() {
     <div className="comments">
       <div className="write">
         <img src={currentUser.profilePic} alt="" />
-        <input type="text" placeholder="write a comment" />
-        <button>Send</button>
+        <input
+          type="text"
+          placeholder="write a comment"
+          value={newComment}
+          onChange={(e) => setNewComment(e.target.value)}
+        />
+        <button onClick={handleSendComment}>Send</button>
       </div>
       {comments.map((comment) => (
         <div className="comment">
@@ -38,6 +60,16 @@ export default function Comments() {
             <p>{comment.desc}</p>
           </div>
           <span className="date">1 hour ago</span>
+        </div>
+      ))}
+      {sendedComments.map((newComment) => (
+        <div className="comment">
+          <img src={newComment.profilePicture} alt="" />
+          <div className="info">
+            <span>You</span>
+            <p>{newComment.desc}</p>
+          </div>
+          <span className="date">now</span>
         </div>
       ))}
     </div>
