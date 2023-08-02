@@ -13,6 +13,8 @@ export default function Login() {
   // const handleLogin = () => {
   //   login();
   // };
+
+  //temporary
   const handleLogin = (e) => {
     e.preventDefault();
     if (!username || !password) {
@@ -22,6 +24,7 @@ export default function Login() {
 
     if (username && password) {
       setLoginError(false);
+      login();
       navigate("/");
     } else {
       setLoginError(true);

@@ -1,12 +1,14 @@
 import "./register.scss";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../context/authContext.jsx";
 
 export default function Register() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [registerError, setRegisterError] = useState(false);
+  const { currentUser, login } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleRegister = (e) => {
@@ -18,6 +20,7 @@ export default function Register() {
 
     if (username && password) {
       setRegisterError(false);
+      login(); //temporary
       navigate("/");
     } else {
       setRegisterError(true);
